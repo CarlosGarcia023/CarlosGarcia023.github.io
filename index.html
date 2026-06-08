@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carlos Garcia — Cybersecurity</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0a0d0f;
+    --bg2: #111519;
+    --bg3: #161c22;
+    --border: rgba(255,255,255,0.07);
+    --border2: rgba(255,255,255,0.13);
+    --text: #e8edf2;
+    --muted: #7a8a98;
+    --accent: #00d4aa;
+    --accent2: #0095ff;
+    --accent3: #ff6b35;
+    --mono: 'Space Mono', monospace;
+    --sans: 'DM Sans', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2.5rem;
+    height: 60px;
+    background: rgba(10,13,15,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 100px 2.5rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,212,170,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,212,170,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+  }
+
+  .hero-glow {
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,212,170,0.06) 0%, transparent 70%);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+
+  .hero-content {
+    max-width: 900px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--accent);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  h1 {
+    font-family: var(--mono);
+    font-size: clamp(2.8rem, 7vw, 5.5rem);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+  }
+
+  h1 .name-accent { color: var(--accent); }
+
+  .hero-tagline {
+    font-size: 1.15rem;
+    color: var(--muted);
+    max-width: 520px;
+    margin-bottom: 2.5rem;
+    line-height: 1.7;
+  }
+
+  .hero-tagline span { color: var(--text); }
+
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1.4rem;
+    border-radius: 4px;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    transition: all 0.2s;
+    cursor: pointer;
+    border: none;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #0a0d0f;
+    font-weight: 700;
+  }
+
+  .btn-primary:hover {
+    background: #00f2c4;
+    transform: translateY(-1px);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border2);
+  }
+
+  .btn-outline:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 2.5rem;
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    flex-wrap: wrap;
+  }
+
+  .stat-item { text-align: left; }
+
+  .stat-num {
+    font-family: var(--mono);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 5rem 2.5rem; max-width: 1100px; margin: 0 auto; }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .section-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+  }
+
+  .section-title {
+    font-family: var(--mono);
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  .section-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ── ABOUT ── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .about-text p {
+    color: var(--muted);
+    margin-bottom: 1rem;
+    line-height: 1.8;
+  }
+
+  .about-text p span { color: var(--text); }
+
+  .cert-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 1.5rem;
+  }
+
+  .cert-badge {
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 0.35rem 0.75rem;
+    border: 1px solid var(--accent);
+    border-radius: 2px;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+  }
+
+  .info-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.5rem;
+  }
+
+  .info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.65rem 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+  }
+
+  .info-row:last-child { border-bottom: none; }
+  .info-label { color: var(--muted); font-size: 12px; letter-spacing: 0.05em; }
+  .info-value { color: var(--text); font-family: var(--mono); font-size: 12px; }
+  .info-value.accent { color: var(--accent); }
+
+  /* ── SKILLS ── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .skill-category {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.25rem;
+    transition: border-color 0.2s;
+  }
+
+  .skill-category:hover { border-color: var(--border2); }
+
+  .skill-cat-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--accent);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    padding-bottom: 0.65rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .skill-tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    background: var(--bg3);
+    color: var(--text);
+    padding: 0.28rem 0.6rem;
+    border-radius: 3px;
+    border: 1px solid var(--border);
+  }
+
+  /* ── PROJECTS ── */
+  .projects-list { display: flex; flex-direction: column; gap: 1.5rem; }
+
+  .project-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.75rem 2rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+    transition: border-color 0.25s, background 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--accent);
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  .project-card:hover {
+    border-color: var(--border2);
+    background: var(--bg3);
+  }
+
+  .project-card:hover::before { opacity: 1; }
+
+  .project-card.featured::before { opacity: 1; }
+  .project-card.featured { border-color: rgba(0,212,170,0.2); }
+
+  .project-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .project-title {
+    font-family: var(--mono);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .project-date {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 0.25rem;
+  }
+
+  .project-desc {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .project-tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    padding: 0.22rem 0.55rem;
+    border-radius: 2px;
+    background: rgba(0,212,170,0.08);
+    color: var(--accent);
+    border: 1px solid rgba(0,212,170,0.2);
+    letter-spacing: 0.05em;
+  }
+
+  .project-icon {
+    font-size: 1.5rem;
+    opacity: 0.4;
+  }
+
+  /* ── EDUCATION ── */
+  .edu-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+    align-items: start;
+  }
+
+  .edu-school {
+    font-family: var(--mono);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 0.3rem;
+  }
+
+  .edu-degree {
+    font-size: 15px;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+  }
+
+  .edu-meta {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 1rem;
+  }
+
+  .gpa-badge {
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 0.4rem 0.8rem;
+    background: rgba(0,212,170,0.1);
+    border: 1px solid rgba(0,212,170,0.3);
+    border-radius: 3px;
+    color: var(--accent);
+    text-align: center;
+  }
+
+  .gpa-num { font-size: 22px; font-weight: 700; display: block; }
+
+  .courses {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 1rem;
+  }
+
+  .course-tag {
+    font-size: 12px;
+    color: var(--muted);
+    background: var(--bg3);
+    padding: 0.25rem 0.6rem;
+    border-radius: 3px;
+    border: 1px solid var(--border);
+  }
+
+  /* ── CONTACT ── */
+  #contact { padding-bottom: 8rem; }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .contact-intro {
+    font-size: 1.05rem;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+
+  .contact-intro span { color: var(--text); }
+
+  .contact-links { display: flex; flex-direction: column; gap: 0.75rem; }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 0.85rem 1rem;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    text-decoration: none;
+    transition: border-color 0.2s, background 0.2s;
+    color: var(--text);
+  }
+
+  .contact-link:hover {
+    border-color: var(--border2);
+    background: var(--bg3);
+  }
+
+  .contact-link-icon {
+    width: 36px; height: 36px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .contact-link-icon.gh { background: rgba(255,255,255,0.05); }
+  .contact-link-icon.li { background: rgba(0,149,255,0.12); }
+  .contact-link-icon.em { background: rgba(0,212,170,0.1); }
+  .contact-link-icon.ph { background: rgba(255,107,53,0.1); }
+
+  .contact-link-text { font-size: 14px; }
+  .contact-link-label { font-size: 11px; color: var(--muted); margin-top: 1px; }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    text-align: center;
+    padding: 2rem;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+  }
+
+  footer span { color: var(--accent); }
+
+  /* ── SCROLL ANIMATIONS ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 720px) {
+    nav { padding: 0 1.25rem; }
+    .nav-links { display: none; }
+    section { padding: 3.5rem 1.25rem; }
+    #hero { padding: 90px 1.25rem 3rem; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .hero-stats { gap: 1.5rem; }
+    .edu-card { grid-template-columns: 1fr; }
+    .project-card { grid-template-columns: 1fr; }
+  }
+
+  /* ── CURSOR BLINK ── */
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+  .cursor { display: inline-block; animation: blink 1.1s step-end infinite; color: var(--accent); }
+
+  /* ── TERMINAL LINE ── */
+  .terminal-line {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+  }
+
+  .terminal-line .prompt { color: var(--accent); }
+  .terminal-line .cmd { color: var(--accent2); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">carlos@garcia:~$</div>
+  <ul class="nav-links">
+    <li><a href="#about">about</a></li>
+    <li><a href="#skills">skills</a></li>
+    <li><a href="#projects">projects</a></li>
+    <li><a href="#education">education</a></li>
+    <li><a href="#contact">contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div id="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Available for opportunities</div>
+    <h1>Carlos<br><span class="name-accent">Garcia</span><span class="cursor">_</span></h1>
+    <p class="hero-tagline">
+      Cybersecurity graduate from <span>UTRGV</span> · B.S. Cybersecurity · 3.80 GPA<br>
+      Building <span>secure systems</span>, breaking them first.
+    </p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn btn-primary">Get in touch →</a>
+      <a href="#projects" class="btn btn-outline">View projects</a>
+      <a href="https://github.com/CarlosGarcia023" target="_blank" class="btn btn-outline">GitHub ↗</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">3.80</div>
+        <div class="stat-label">GPA</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">2×</div>
+        <div class="stat-label">HSF Scholar</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">2</div>
+        <div class="stat-label">CompTIA Certs</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">5+</div>
+        <div class="stat-label">Projects shipped</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-header reveal">
+    <span class="section-num">01</span>
+    <h2 class="section-title">about</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <p>I'm a <span>cybersecurity professional</span> from Zapata, Texas — a border town that shaped how I think about resilience, resourcefulness, and getting things done with what you have.</p>
+      <p>I graduated from <span>UTRGV in December 2025</span> with a B.S. in Cybersecurity, finishing with a 3.80 GPA and recognition as an HSF Scholar two years running. My work spans network security, cloud infrastructure, embedded systems, and AI integration.</p>
+      <p>I build things that are <span>actually secure</span> — not just compliant. Whether that's a Pi-hole DNS lab, a GCP-deployed AI agent, or a Raspberry Pi phishing simulation for a class exercise, I like getting hands-on with the full stack of a problem.</p>
+      <div class="cert-row">
+        <span class="cert-badge">Security+</span>
+        <span class="cert-badge">Network+</span>
+        <span class="cert-badge">HSF Scholar '23-24</span>
+        <span class="cert-badge">HSF Scholar '24-25</span>
+      </div>
+    </div>
+    <div class="info-card reveal">
+      <div class="info-row">
+        <span class="info-label">Location</span>
+        <span class="info-value">Zapata, TX</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Degree</span>
+        <span class="info-value">B.S. Cybersecurity</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Graduated</span>
+        <span class="info-value">Dec 2025</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">GPA</span>
+        <span class="info-value accent">3.80 / 4.00</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Languages</span>
+        <span class="info-value">English · Spanish</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Email</span>
+        <span class="info-value" style="font-size:11px">carlosgarcia2245@outlook.com</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">LinkedIn</span>
+        <span class="info-value accent">/in/carlosgarica04</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-header reveal">
+    <span class="section-num">02</span>
+    <h2 class="section-title">skills</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-category reveal">
+      <div class="skill-cat-label">Languages</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">C</span>
+        <span class="skill-tag">C++</span>
+        <span class="skill-tag">Java</span>
+        <span class="skill-tag">SQL</span>
+        <span class="skill-tag">HTML</span>
+      </div>
+    </div>
+    <div class="skill-category reveal">
+      <div class="skill-cat-label">Security</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Network Config</span>
+        <span class="skill-tag">VPN Setup</span>
+        <span class="skill-tag">SIEM/Logs</span>
+        <span class="skill-tag">Vuln. Mgmt</span>
+        <span class="skill-tag">Intrusion Detection</span>
+      </div>
+    </div>
+    <div class="skill-category reveal">
+      <div class="skill-cat-label">Cloud & Infra</div>
+      <div class="skill-tags">
+        <span class="skill-tag">GCP</span>
+        <span class="skill-tag">IAM</span>
+        <span class="skill-tag">CI/CD</span>
+        <span class="skill-tag">Cloud Infra</span>
+        <span class="skill-tag">Linux</span>
+      </div>
+    </div>
+    <div class="skill-category reveal">
+      <div class="skill-cat-label">Tools</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Wireshark</span>
+        <span class="skill-tag">VirtualBox</span>
+        <span class="skill-tag">PacketTracer</span>
+        <span class="skill-tag">FileZilla</span>
+        <span class="skill-tag">Git / GitHub</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-header reveal">
+    <span class="section-num">03</span>
+    <h2 class="section-title">projects</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="projects-list">
+
+    <div class="project-card featured reveal">
+      <div>
+        <div class="project-header">
+          <div>
+            <div class="project-title">Cloud-Based AI Agent — GCP</div>
+            <div class="project-date">Jan 2026 – Feb 2026</div>
+          </div>
+        </div>
+        <p class="project-desc">Architected and deployed a custom AI agent using the Claude API on Google Cloud Platform to automate designated tasks. Configured cloud infrastructure and security controls with GCP IAM, enforcing least-privilege access and secure API communication end-to-end.</p>
+        <div class="project-tags">
+          <span class="project-tag">GCP</span>
+          <span class="project-tag">Python</span>
+          <span class="project-tag">Claude API</span>
+          <span class="project-tag">IAM</span>
+          <span class="project-tag">Cloud Security</span>
+        </div>
+      </div>
+      <div class="project-icon">☁️</div>
+    </div>
+
+    <div class="project-card featured reveal">
+      <div>
+        <div class="project-header">
+          <div>
+            <div class="project-title">Network Security Home Lab</div>
+            <div class="project-date">Jan 2026 – Feb 2026</div>
+          </div>
+        </div>
+        <p class="project-desc">Designed and implemented a secure home lab environment with a Pi-hole DNS sinkhole to proactively block malicious domains and telemetry. Also configured a custom IPTV multimedia streaming architecture with optimized network routing and secure local server hosting.</p>
+        <div class="project-tags">
+          <span class="project-tag">Linux</span>
+          <span class="project-tag">DNS</span>
+          <span class="project-tag">Pi-hole</span>
+          <span class="project-tag">Network Config</span>
+          <span class="project-tag">IPTV</span>
+        </div>
+      </div>
+      <div class="project-icon">🔒</div>
+    </div>
+
+    <div class="project-card reveal">
+      <div>
+        <div class="project-header">
+          <div>
+            <div class="project-title">Advanced Embedded System — Capstone</div>
+            <div class="project-date">Oct 2025 – Dec 2025</div>
+          </div>
+        </div>
+        <p class="project-desc">Integrated multiple specialized devices into a single cohesive system for real-time data capture and processing. Wrote custom internal software to enable seamless communication between hardware components, optimizing data flow from sensors to user output.</p>
+        <div class="project-tags">
+          <span class="project-tag">Embedded Systems</span>
+          <span class="project-tag">Real-Time Processing</span>
+          <span class="project-tag">Hardware Integration</span>
+        </div>
+      </div>
+      <div class="project-icon">🖥️</div>
+    </div>
+
+    <div class="project-card reveal">
+      <div>
+        <div class="project-header">
+          <div>
+            <div class="project-title">Expense Tracker Web App</div>
+            <div class="project-date">Oct 2024 – Dec 2024</div>
+          </div>
+        </div>
+        <p class="project-desc">Developed and deployed a full-featured expense tracker in Python and Tkinter, then enhanced it for web-based use. Integrated user-defined groups, error handling, and cloud-based data management into a complete software engineering project.</p>
+        <div class="project-tags">
+          <span class="project-tag">Python</span>
+          <span class="project-tag">Tkinter</span>
+          <span class="project-tag">Cloud Storage</span>
+          <span class="project-tag">Web Dev</span>
+        </div>
+      </div>
+      <div class="project-icon">📊</div>
+    </div>
+
+    <div class="project-card reveal">
+      <div>
+        <div class="project-header">
+          <div>
+            <div class="project-title">Raspberry Pi Web Server + Phishing Lab</div>
+            <div class="project-date">Mar 2024 – May 2024</div>
+          </div>
+        </div>
+        <p class="project-desc">Built a Raspberry Pi-based web server for local hosting. Developed a simulated phishing site as a controlled cybersecurity exercise, demonstrating server setup, web development, database management, and security awareness testing.</p>
+        <div class="project-tags">
+          <span class="project-tag">Raspberry Pi</span>
+          <span class="project-tag">Linux</span>
+          <span class="project-tag">Web Server</span>
+          <span class="project-tag">Phishing Sim</span>
+          <span class="project-tag">Database</span>
+        </div>
+      </div>
+      <div class="project-icon">🍓</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-header reveal">
+    <span class="section-num">04</span>
+    <h2 class="section-title">education</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="edu-card reveal">
+    <div>
+      <div class="edu-school">University of Texas Rio Grande Valley</div>
+      <div class="edu-degree">Bachelor of Science — Cybersecurity</div>
+      <div class="edu-meta">Edinburg, Texas · Graduated December 2025</div>
+      <p style="font-size:14px; color:var(--muted); margin-bottom:0.5rem;">
+        HSF (Hispanic Scholarship Fund) Scholar for 2023–24 and 2024–25 academic years. Relevant coursework in network security, operating systems, intrusion detection, mobile security, and networking.
+      </p>
+      <div class="courses">
+        <span class="course-tag">Network Security</span>
+        <span class="course-tag">Operating Systems</span>
+        <span class="course-tag">Intrusion Detection</span>
+        <span class="course-tag">Mobile Security</span>
+        <span class="course-tag">Networking</span>
+      </div>
+    </div>
+    <div style="text-align:center;">
+      <div class="gpa-badge">
+        <span class="gpa-num">3.80</span>
+        GPA / 4.00
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-header reveal">
+    <span class="section-num">05</span>
+    <h2 class="section-title">contact</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="contact-grid">
+    <div class="reveal">
+      <p class="contact-intro">
+        I'm actively looking for <span>cybersecurity, network, or cloud roles</span>. Whether you have an opportunity, a project, or just want to connect — reach out.
+      </p>
+      <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">echo</span> "Let's build something secure."</div>
+      <div class="terminal-line" style="color: var(--accent); padding-left: 1rem;">Let's build something secure.</div>
+    </div>
+    <div class="contact-links reveal">
+      <a class="contact-link" href="mailto:carlosgarcia2245@outlook.com">
+        <div class="contact-link-icon em">✉️</div>
+        <div>
+          <div class="contact-link-text">carlosgarcia2245@outlook.com</div>
+          <div class="contact-link-label">Email</div>
+        </div>
+      </a>
+      <a class="contact-link" href="tel:+19562820240">
+        <div class="contact-link-icon ph">📱</div>
+        <div>
+          <div class="contact-link-text">(956) 282-0240</div>
+          <div class="contact-link-label">Phone</div>
+        </div>
+      </a>
+      <a class="contact-link" href="https://www.linkedin.com/in/carlosgarica04/" target="_blank" rel="noopener">
+        <div class="contact-link-icon li">💼</div>
+        <div>
+          <div class="contact-link-text">linkedin.com/in/carlosgarica04</div>
+          <div class="contact-link-label">LinkedIn</div>
+        </div>
+      </a>
+      <a class="contact-link" href="https://github.com/CarlosGarcia023" target="_blank" rel="noopener">
+        <div class="contact-link-icon gh">🐙</div>
+        <div>
+          <div class="contact-link-text">github.com/CarlosGarcia023</div>
+          <div class="contact-link-label">GitHub</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>built by <span>carlos garcia</span> · zapata, tx · 2026</p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 60);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
