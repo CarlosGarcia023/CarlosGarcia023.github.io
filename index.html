@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Carlos Garcia — Cybersecurity</title>
+<title>Carlos Garcia — Cybersecurity & IT Infrastructure</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -146,7 +146,7 @@
   .hero-tagline {
     font-size: 1.15rem;
     color: var(--muted);
-    max-width: 520px;
+    max-width: 580px;
     margin-bottom: 2.5rem;
     line-height: 1.7;
   }
@@ -307,10 +307,116 @@
   .info-value { color: var(--text); font-family: var(--mono); font-size: 12px; }
   .info-value.accent { color: var(--accent); }
 
+  /* ── EXPERIENCE ── */
+  .exp-card {
+    background: var(--bg2);
+    border: 1px solid rgba(0,212,170,0.22);
+    border-radius: 8px;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.25s, background 0.25s;
+  }
+
+  .exp-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--accent);
+  }
+
+  .exp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .exp-role {
+    font-family: var(--mono);
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.25rem;
+  }
+
+  .exp-org {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--accent);
+  }
+
+  .exp-meta {
+    text-align: right;
+  }
+
+  .exp-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 0.3rem 0.7rem;
+    background: rgba(0,212,170,0.1);
+    border: 1px solid rgba(0,212,170,0.3);
+    border-radius: 3px;
+    color: var(--accent);
+    margin-bottom: 0.35rem;
+  }
+
+  .exp-status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: blink 1.4s ease-in-out infinite;
+  }
+
+  .exp-loc {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    display: block;
+  }
+
+  .exp-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .exp-bullets li {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.7;
+    padding-left: 1.25rem;
+    position: relative;
+  }
+
+  .exp-bullets li::before {
+    content: '▹';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-family: var(--mono);
+  }
+
+  .exp-bullets li span {
+    color: var(--text);
+    font-weight: 500;
+  }
+
   /* ── SKILLS ── */
   .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 1.5rem;
   }
 
@@ -591,6 +697,7 @@
     .hero-stats { gap: 1.5rem; }
     .edu-card { grid-template-columns: 1fr; }
     .project-card { grid-template-columns: 1fr; }
+    .exp-meta { text-align: left; }
   }
 
   /* ── CURSOR BLINK ── */
@@ -615,6 +722,7 @@
   <div class="nav-logo">carlos@garcia:~$</div>
   <ul class="nav-links">
     <li><a href="#about">about</a></li>
+    <li><a href="#experience">experience</a></li>
     <li><a href="#skills">skills</a></li>
     <li><a href="#projects">projects</a></li>
     <li><a href="#education">education</a></li>
@@ -627,33 +735,34 @@
   <div class="hero-grid"></div>
   <div class="hero-glow"></div>
   <div class="hero-content">
-    <div class="hero-eyebrow">Available for opportunities</div>
+    <div class="hero-eyebrow">IT &amp; Cybersecurity Specialist @ LUPE</div>
     <h1>Carlos<br><span class="name-accent">Garcia</span><span class="cursor">_</span></h1>
     <p class="hero-tagline">
-      Cybersecurity graduate from <span>UTRGV</span> · B.S. Cybersecurity · 3.80 GPA<br>
-      Building <span>secure systems</span>, breaking them first.
+      Cybersecurity &amp; IT Infrastructure Engineer · <span>UTRGV B.S. Cybersecurity</span><br>
+      Securing multi-site networks, cloud platforms, and full-stack systems — <span>building them right, breaking them first.</span>
     </p>
     <div class="hero-cta">
-      <a href="#contact" class="btn btn-primary">Get in touch →</a>
-      <a href="#projects" class="btn btn-outline">View projects</a>
+      <a href="#projects" class="btn btn-primary">View projects →</a>
+      <a href="#experience" class="btn btn-outline">Current role</a>
+      <a href="#contact" class="btn btn-outline">Get in touch</a>
       <a href="https://github.com/CarlosGarcia023" target="_blank" class="btn btn-outline">GitHub ↗</a>
     </div>
     <div class="hero-stats">
       <div class="stat-item">
-        <div class="stat-num">3.80</div>
-        <div class="stat-label">GPA</div>
+        <div class="stat-num">4</div>
+        <div class="stat-label">Regional Sites Managed</div>
       </div>
       <div class="stat-item">
-        <div class="stat-num">2×</div>
-        <div class="stat-label">HSF Scholar</div>
+        <div class="stat-num">10+</div>
+        <div class="stat-label">Projects Shipped</div>
       </div>
       <div class="stat-item">
         <div class="stat-num">2</div>
         <div class="stat-label">CompTIA Certs</div>
       </div>
       <div class="stat-item">
-        <div class="stat-num">5+</div>
-        <div class="stat-label">Projects shipped</div>
+        <div class="stat-num">3.80</div>
+        <div class="stat-label">B.S. GPA · 2× HSF Scholar</div>
       </div>
     </div>
   </div>
@@ -668,28 +777,28 @@
   </div>
   <div class="about-grid">
     <div class="about-text reveal">
-      <p>I'm a <span>cybersecurity professional</span> from Zapata, Texas — a border town that shaped how I think about resilience, resourcefulness, and getting things done with what you have.</p>
-      <p>I graduated from <span>UTRGV in December 2025</span> with a B.S. in Cybersecurity, finishing with a 3.80 GPA and recognition as an HSF Scholar two years running. My work spans network security, cloud infrastructure, embedded systems, and AI integration.</p>
-      <p>I build things that are <span>actually secure</span> — not just compliant. Whether that's a Pi-hole DNS lab, a GCP-deployed AI agent, or a Raspberry Pi phishing simulation for a class exercise, I like getting hands-on with the full stack of a problem.</p>
+      <p>I'm a <span>cybersecurity and IT infrastructure specialist</span> from Zapata, Texas — a border town that shaped how I think about resilience, resourcefulness, and engineering solutions that hold up in the real world.</p>
+      <p>Currently, I lead IT operations, security hardening, and cloud systems engineering at <span>La Unión del Pueblo Entero (LUPE)</span> across four regional offices in the Rio Grande Valley. From architecting multi-site UniFi VPNs and managing hybrid Microsoft Entra ID / Google Workspace environments to deploying full-stack cloud applications on GCP, I own the technology stack end-to-end.</p>
+      <p>I graduated from <span>UTRGV in December 2025</span> with a B.S. in Cybersecurity (3.80 GPA, 2× HSF Scholar). I focus on building systems that are <span>actually secure</span> — not just compliant.</p>
       <div class="cert-row">
-        <span class="cert-badge">Security+</span>
-        <span class="cert-badge">Network+</span>
+        <span class="cert-badge">CompTIA Security+</span>
+        <span class="cert-badge">CompTIA Network+</span>
         <span class="cert-badge">HSF Scholar '23-24</span>
         <span class="cert-badge">HSF Scholar '24-25</span>
       </div>
     </div>
     <div class="info-card reveal">
       <div class="info-row">
+        <span class="info-label">Current Role</span>
+        <span class="info-value accent">IT &amp; Security @ LUPE</span>
+      </div>
+      <div class="info-row">
         <span class="info-label">Location</span>
-        <span class="info-value">Zapata, TX</span>
+        <span class="info-value">Rio Grande Valley / Zapata, TX</span>
       </div>
       <div class="info-row">
         <span class="info-label">Degree</span>
-        <span class="info-value">B.S. Cybersecurity</span>
-      </div>
-      <div class="info-row">
-        <span class="info-label">Graduated</span>
-        <span class="info-value">Dec 2025</span>
+        <span class="info-value">B.S. Cybersecurity (UTRGV)</span>
       </div>
       <div class="info-row">
         <span class="info-label">GPA</span>
@@ -711,52 +820,100 @@
   </div>
 </section>
 
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-header reveal">
+    <span class="section-num">02</span>
+    <h2 class="section-title">experience</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="exp-card reveal">
+    <div class="exp-header">
+      <div>
+        <div class="exp-role">IT &amp; Cybersecurity Specialist</div>
+        <div class="exp-org">La Unión del Pueblo Entero (LUPE)</div>
+      </div>
+      <div class="exp-meta">
+        <div class="exp-status"><span class="exp-status-dot"></span> CURRENT ROLE · 2026 – PRESENT</div>
+        <span class="exp-loc">San Juan, San Benito, RGC &amp; Alton, TX</span>
+      </div>
+    </div>
+
+    <ul class="exp-bullets">
+      <li><span>Multi-Site Network &amp; VPN Architecture:</span> Manage and harden UniFi Dream Machine Pro (UDM Pro) gateways, switches, and APs across 4 regional offices; re-architected overlapping LAN subnets and deployed encrypted Site-to-Site IPsec VPN tunnels and isolated VLANs.</li>
+      <li><span>Cloud &amp; Full-Stack Engineering:</span> Built and deployed the organization's Digital Membership Wallet platform on Google Cloud Run &amp; Cloud SQL, integrating NGP VAN / EveryAction CRM APIs with Google Wallet and Apple Wallet pass generation.</li>
+      <li><span>Enterprise Identity &amp; Endpoint Security:</span> Administer hybrid Microsoft 365 / Entra ID, Intune, Defender for Endpoint, Google Workspace, Apple Business Manager, and Codeproof MDM — enforcing MFA, BitLocker TPM encryption, USB/endpoint policies, and SPF/DKIM/DMARC email security.</li>
+      <li><span>CRM Data Migration &amp; Automation:</span> Lead technical execution for the NGP VAN to EveryAction platform migration, building Python data export pipelines, Terraform Cloud SQL infrastructure, and automated HR-to-IT employee onboarding flows in Power Automate.</li>
+      <li><span>Governance &amp; Operations:</span> Authored the organization's official <em>AI Acceptable Use &amp; Data Governance Policy</em> and the comprehensive <em>IT Team Operations &amp; Onboarding Resource Guide</em>, while managing 8x8 VoIP, Asset Tiger inventory, and enterprise AV systems.</li>
+    </ul>
+
+    <div class="project-tags">
+      <span class="project-tag">Microsoft 365 / Entra ID</span>
+      <span class="project-tag">Intune &amp; Defender</span>
+      <span class="project-tag">UniFi UDM Pro</span>
+      <span class="project-tag">GCP / Cloud Run</span>
+      <span class="project-tag">Google Workspace</span>
+      <span class="project-tag">NGP VAN / EveryAction API</span>
+      <span class="project-tag">Power Automate</span>
+      <span class="project-tag">MDM / Asset Tiger</span>
+    </div>
+  </div>
+</section>
+
 <!-- SKILLS -->
 <section id="skills">
   <div class="section-header reveal">
-    <span class="section-num">02</span>
+    <span class="section-num">03</span>
     <h2 class="section-title">skills</h2>
     <div class="section-line"></div>
   </div>
   <div class="skills-grid">
     <div class="skill-category reveal">
-      <div class="skill-cat-label">Languages</div>
+      <div class="skill-cat-label">Languages &amp; Dev</div>
       <div class="skill-tags">
         <span class="skill-tag">Python</span>
-        <span class="skill-tag">C</span>
-        <span class="skill-tag">C++</span>
+        <span class="skill-tag">JavaScript / Node.js</span>
+        <span class="skill-tag">SQL / PostgreSQL</span>
+        <span class="skill-tag">C / C++</span>
         <span class="skill-tag">Java</span>
-        <span class="skill-tag">SQL</span>
-        <span class="skill-tag">HTML</span>
+        <span class="skill-tag">HTML / CSS</span>
+        <span class="skill-tag">PowerShell</span>
       </div>
     </div>
     <div class="skill-category reveal">
-      <div class="skill-cat-label">Security</div>
+      <div class="skill-cat-label">Security &amp; Networking</div>
       <div class="skill-tags">
-        <span class="skill-tag">Network Config</span>
-        <span class="skill-tag">VPN Setup</span>
-        <span class="skill-tag">SIEM/Logs</span>
-        <span class="skill-tag">Vuln. Mgmt</span>
-        <span class="skill-tag">Intrusion Detection</span>
+        <span class="skill-tag">UniFi / UDM Pro</span>
+        <span class="skill-tag">Site-to-Site IPsec VPN</span>
+        <span class="skill-tag">Defender for Endpoint</span>
+        <span class="skill-tag">VLAN Segmentation</span>
+        <span class="skill-tag">SIEM / Log Analysis</span>
+        <span class="skill-tag">Vuln. Management</span>
+        <span class="skill-tag">SPF / DKIM / DMARC</span>
       </div>
     </div>
     <div class="skill-category reveal">
-      <div class="skill-cat-label">Cloud & Infra</div>
+      <div class="skill-cat-label">Cloud &amp; Enterprise IT</div>
       <div class="skill-tags">
-        <span class="skill-tag">GCP</span>
-        <span class="skill-tag">IAM</span>
-        <span class="skill-tag">CI/CD</span>
-        <span class="skill-tag">Cloud Infra</span>
-        <span class="skill-tag">Linux</span>
+        <span class="skill-tag">GCP (Cloud Run / SQL)</span>
+        <span class="skill-tag">M365 / Entra ID</span>
+        <span class="skill-tag">Microsoft Intune</span>
+        <span class="skill-tag">Google Workspace</span>
+        <span class="skill-tag">Terraform</span>
+        <span class="skill-tag">Docker / CI/CD</span>
+        <span class="skill-tag">Linux / Kali</span>
       </div>
     </div>
     <div class="skill-category reveal">
-      <div class="skill-cat-label">Tools</div>
+      <div class="skill-cat-label">Tools &amp; Platforms</div>
       <div class="skill-tags">
-        <span class="skill-tag">Wireshark</span>
-        <span class="skill-tag">VirtualBox</span>
-        <span class="skill-tag">PacketTracer</span>
-        <span class="skill-tag">FileZilla</span>
+        <span class="skill-tag">EveryAction / VAN API</span>
+        <span class="skill-tag">Power Automate</span>
+        <span class="skill-tag">Apple Business / MDM</span>
+        <span class="skill-tag">Wireshark / Nmap</span>
+        <span class="skill-tag">8x8 VoIP</span>
+        <span class="skill-tag">Asset Tiger</span>
         <span class="skill-tag">Git / GitHub</span>
       </div>
     </div>
@@ -766,13 +923,113 @@
 <!-- PROJECTS -->
 <section id="projects">
   <div class="section-header reveal">
-    <span class="section-num">03</span>
+    <span class="section-num">04</span>
     <h2 class="section-title">projects</h2>
     <div class="section-line"></div>
   </div>
   <div class="projects-list">
 
     <div class="project-card featured reveal">
+      <div>
+        <div class="project-header">
+          <div>
+            <div class="project-title">LUPE Digital Membership Wallet &amp; EveryAction Integration</div>
+            <div class="project-date">Aug 2026 – Sep 2026</div>
+          </div>
+        </div>
+        <p class="project-desc">Architected and deployed a full-stack digital membership pass platform on Google Cloud Run and Cloud SQL (PostgreSQL). Integrated the NGP VAN / EveryAction REST API with Google Wallet and Apple Wallet (.pkpass) to automatically match members, generate region-coded folio numbers, issue QR passes, and verify members via a staff QR scanner portal. Hardened with HMAC-SHA256 signed claim tokens, Helmet, CORS, and rate limiting.</p>
+        <div class="project-tags">
+          <span class="project-tag">Node.js / Express</span>
+          <span class="project-tag">Google Cloud Run</span>
+          <span class="project-tag">Cloud SQL</span>
+          <span class="project-tag">Google &amp; Apple Wallet API</span>
+          <span class="project-tag">EveryAction API</span>
+          <span class="project-tag">HMAC Security</span>
+        </div>
+      </div>
+      <div class="project-icon">🪪</div>
+    </div>
+
+    <div class="project-card featured reveal">
+      <div>
+        <div class="project-header">
+          <div>
+            <div class="project-title">NGP VAN → EveryAction CRM Migration Pipeline &amp; UAT Suite</div>
+            <div class="project-date">Aug 2026 – Oct 2026</div>
+          </div>
+        </div>
+        <p class="project-desc">Engineered an automated data export pipeline in Python and provisioned GCP Cloud SQL PostgreSQL infrastructure using Terraform to support an organization-wide CRM platform migration. Built a UAT validation dashboard, VanID translation mapping utilities, and a comprehensive migration playbook covering API integrations, RBAC user profiles, and data integrity verification.</p>
+        <div class="project-tags">
+          <span class="project-tag">Python</span>
+          <span class="project-tag">Terraform</span>
+          <span class="project-tag">GCP Cloud SQL</span>
+          <span class="project-tag">REST APIs</span>
+          <span class="project-tag">Data Engineering</span>
+        </div>
+      </div>
+      <div class="project-icon">🔄</div>
+    </div>
+
+    <div class="project-card featured reveal">
+      <div>
+        <div class="project-header">
+          <div>
+            <div class="project-title">AI-Powered Receipt Matcher &amp; Expense Ledger App</div>
+            <div class="project-date">Sep 2026</div>
+          </div>
+        </div>
+        <p class="project-desc">Built a progressive web application for department finance reconciliation with mobile receipt scanning, AI-driven OCR extraction, and fuzzy merchant-name transaction matching. Added interactive spending analytics charts, recurring charge detection, category budget alerts, bulk ledger actions, and local IndexedDB persistence.</p>
+        <div class="project-tags">
+          <span class="project-tag">JavaScript</span>
+          <span class="project-tag">AI OCR Matching</span>
+          <span class="project-tag">IndexedDB</span>
+          <span class="project-tag">Data Visualization</span>
+          <span class="project-tag">Web App</span>
+        </div>
+      </div>
+      <div class="project-icon">🧾</div>
+    </div>
+
+    <div class="project-card featured reveal">
+      <div>
+        <div class="project-header">
+          <div>
+            <div class="project-title">Multi-Site UniFi IPsec VPN &amp; Network Segmentation</div>
+            <div class="project-date">Sep 2026 – Oct 2026</div>
+          </div>
+        </div>
+        <p class="project-desc">Resolved overlapping subnet conflicts across 4 regional offices (San Juan HQ, San Benito, Rio Grande City, and Alton) and deployed encrypted Site-to-Site IPsec VPN tunnels anchored by a UniFi Dream Machine Pro. Configured dedicated corporate, guest, and AV wireless VLANs alongside firewall hardening rules.</p>
+        <div class="project-tags">
+          <span class="project-tag">UniFi UDM Pro</span>
+          <span class="project-tag">IPsec VPN</span>
+          <span class="project-tag">Subnet Architecture</span>
+          <span class="project-tag">VLANs</span>
+          <span class="project-tag">Firewall Hardening</span>
+        </div>
+      </div>
+      <div class="project-icon">🌐</div>
+    </div>
+
+    <div class="project-card reveal">
+      <div>
+        <div class="project-header">
+          <div>
+            <div class="project-title">Automated HR-to-IT Onboarding Pipeline</div>
+            <div class="project-date">Sep 2026</div>
+          </div>
+        </div>
+        <p class="project-desc">Designed an automated employee lifecycle pipeline connecting Microsoft Forms, Power Automate, Microsoft Lists, Planner, and Teams. Automates IT provisioning alerts for Active Directory/Entra ID and Intune enrollment, dispatches welcome communications, and tracks live onboarding completion metrics.</p>
+        <div class="project-tags">
+          <span class="project-tag">Power Automate</span>
+          <span class="project-tag">Microsoft 365</span>
+          <span class="project-tag">Entra ID / Intune</span>
+          <span class="project-tag">Workflow Automation</span>
+        </div>
+      </div>
+      <div class="project-icon">⚡</div>
+    </div>
+
+    <div class="project-card reveal">
       <div>
         <div class="project-header">
           <div>
@@ -792,7 +1049,7 @@
       <div class="project-icon">☁️</div>
     </div>
 
-    <div class="project-card featured reveal">
+    <div class="project-card reveal">
       <div>
         <div class="project-header">
           <div>
@@ -875,7 +1132,7 @@
 <!-- EDUCATION -->
 <section id="education">
   <div class="section-header reveal">
-    <span class="section-num">04</span>
+    <span class="section-num">05</span>
     <h2 class="section-title">education</h2>
     <div class="section-line"></div>
   </div>
@@ -907,14 +1164,14 @@
 <!-- CONTACT -->
 <section id="contact">
   <div class="section-header reveal">
-    <span class="section-num">05</span>
+    <span class="section-num">06</span>
     <h2 class="section-title">contact</h2>
     <div class="section-line"></div>
   </div>
   <div class="contact-grid">
     <div class="reveal">
       <p class="contact-intro">
-        I'm actively looking for <span>cybersecurity, network, or cloud roles</span>. Whether you have an opportunity, a project, or just want to connect — reach out.
+        Always open to discussing <span>cybersecurity, network architecture, or cloud engineering</span>. Whether you want to collaborate on a project or connect professionally — reach out.
       </p>
       <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">echo</span> "Let's build something secure."</div>
       <div class="terminal-line" style="color: var(--accent); padding-left: 1rem;">Let's build something secure.</div>
